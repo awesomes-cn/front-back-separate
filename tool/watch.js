@@ -25,7 +25,7 @@ chokidar.watch('./src').on('all', (event, filepath) => {
  * @return {string}          要执行的命令
  */
 const cmdMaps = {
-  '.js': ['clear:js','babel', 'webpack', 'minify:js'],
+  '.js': ['clear:js','babel', 'webpack', 'minify:js','mock'],
   '.scss': ['clear:css','sass', 'concat:css']
 }
 const getCmd = (filepath)=> {

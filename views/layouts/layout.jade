@@ -6,11 +6,19 @@ html
     meta(name="description" content="A simple fast stable and powerfull avatar service" )
     meta(name="keywords" content="Svpa,avatar,letter avatar" )
     link(href="/dist/vendor.min.css" rel="stylesheet")
-    link(href="/dist/css/controller/#{params.controller}.min.css" rel="stylesheet")
+    link(href="/dist/css/controller/#{route.controller}.min.css" rel="stylesheet")
 
-  body
+  body#app
     header
     block con
     footer
       script(src="/dist/vendor.min.js")
-      script(src="/dist/js/controller/#{params.controller}.min.js")
+      
+      //- 测试环境下额外的JS代码
+      script(src="/dist/js/development.js") 
+      
+      script.
+        window.Controller = {}
+      script(src="/dist/js/controller/#{route.controller}.min.js")
+      script.
+        new Controller.#{route.action}

@@ -45,6 +45,10 @@ const tasks = {
     cmd: 'node tool/minify_js.js',
     tip: 'JS 压缩'
   },
+  'mock': {
+    cmd: 'node tool/mock.js',
+    tip: 'Mock 数据'
+  },
   'vendor:js': {
     cmd: 'uglifyjs ' + PC.js.vendor.src + ' -o ' + PC.js.vendor.dist + ' --compress',
     tip: '公共 JS 打包压缩'
@@ -70,7 +74,7 @@ const tasks = {
  */
 const group = {
   "css": ['sass', 'concat:css'],
-  "js": ['babel', 'webpack', 'minify:js'],
+  "js": ['babel', 'webpack', 'minify:js', 'mock'],
   "test": ['eslint', "test"]
 }
 

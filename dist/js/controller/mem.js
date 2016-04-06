@@ -44,13 +44,27 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(4);
-	module.exports = __webpack_require__(5);
+	__webpack_require__(2);
+	module.exports = __webpack_require__(4);
 
 
 /***/ },
 /* 1 */,
 /* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _Game = __webpack_require__(3);
+
+	var game = new _Game.Game();
+	var hello = function hello(a, b) {
+	  return a + b;
+	};
+	console.log(game.play());
+
+/***/ },
+/* 3 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -124,27 +138,12 @@
 	exports.Game = Game;
 
 /***/ },
-/* 3 */,
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _Game = __webpack_require__(2);
-
-	var game = new _Game.Game();
-	var hello = function hello(a, b) {
-	  return a + b;
-	};
-	console.log(game.play());
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _Game = __webpack_require__(2);
+	var _Game = __webpack_require__(3);
 
 	var game = new _Game.Game();
 	var hello = function hello(a, b) {

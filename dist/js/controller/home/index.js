@@ -1,8 +1,58 @@
 'use strict';
 
-var _Game = require('../../module/Game');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var game = new _Game.Game();
-var hello = function hello(a, b) {
-  return a + b;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var mockAjax = function mockAjax(apiName) {
+  return window.MOCK[apiName];
 };
+
+var API = {
+  get: function get(apiName, params, successHandler, ismock) {
+    if (ismock) {
+      successHandler(mockAjax(apiName));
+    } else {
+      var url = 'http://test.dpj.com/api?apiname=' + apiName;
+      $.get(url, params, successHandler);
+    }
+  }
+};
+
+var model = void 0,
+    mvvm = void 0;
+
+var Index = function () {
+  function Index() {
+    _classCallCheck(this, Index);
+
+    model = this;
+
+    mvvm = new Vue({
+      el: '#app',
+      data: {
+        items: []
+      }
+    });
+
+    this.init();
+  }
+
+  _createClass(Index, [{
+    key: 'init',
+    value: function init() {
+      this.getMems();
+    }
+  }, {
+    key: 'getMems',
+    value: function getMems() {
+      API.get('getMems', {}, function (data) {
+        mvvm.items = data.items;
+      }, true);
+    }
+  }]);
+
+  return Index;
+}();
+
+window.Controller.index = Index;

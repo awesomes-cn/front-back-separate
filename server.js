@@ -22,7 +22,14 @@ app.use(views(__dirname + '/views', {
 let renderAction = async (ctx, controller, action)=> {
   console.log(controller + action)
   let vi = controller + '/' + action + '.jade'
-  await ctx.render(vi,{params: ctx.params})
+  await ctx.render(vi,
+    {
+      params: ctx.params,
+      route: {
+        controller: controller,
+        action: action
+      }
+  })
 }
 
 
