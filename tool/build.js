@@ -29,7 +29,9 @@ let getCmds = ()=> {
   for(let item in tasks){
     ts.push(tasks[item])
   }
-  return ts
+  return ts.filter((item)=> {
+    return !item.ignore
+  })
 }
 
 

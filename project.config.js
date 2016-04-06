@@ -16,7 +16,7 @@ module.exports = {
     },
     vendor: {
       src: 'vendor/js/*.js',
-      dist: 'dist/js/vendor.min.js'
+      dist: 'dist/vendor.min.js'
     }
   },
   css: {

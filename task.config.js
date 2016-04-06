@@ -8,17 +8,30 @@ const tasks = {
     cmd: 'rm -rf ' + PC.assets.dist,
     tip: '清空目标文件夹'
   },
+  'clear:js': {
+    cmd: 'rm -rf ' + PC.js.dist,
+    tip: '清空JS文件目标文件夹',
+    ignore: true
+  },
+  'clear:css': {
+    cmd: 'rm -rf ' + PC.css.dist,
+    tip: '清空CSS文件目标文件夹',
+    ignore: true
+  },
   'eslint': {
     cmd: 'eslint ' + PC.eslint.src,
-    tip: '语法检测'
+    tip: '语法检测',
+    ignore: true
   },
   'test': {
     cmd: 'ava ' + PC.test.src,
-    tip: '单元测试'
+    tip: '单元测试',
+    ignore: true
   },
   'doc': {
     cmd:  'jsdoc ' + PC.js.doc.src + ' -c ' + PC.js.doc.conf,
-    tip: '文档生成'
+    tip: '文档生成',
+    ignore: true
   },
   'babel': {
     cmd: 'babel ' + PC.js.src + ' -d ' + PC.js.dist,
@@ -45,7 +58,7 @@ const tasks = {
     tip: 'CSS 合并'
   },
   'vendor:css': {
-    cmd: 'cat vendor/css/*  | cleancss -o  dist/css/vendor.min.css --s0',
+    cmd: 'cat vendor/css/*  | cleancss -o  dist/vendor.min.css --s0',
     tip: '公共 CSS 打包压缩'
   }
   

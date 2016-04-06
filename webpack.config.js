@@ -6,7 +6,7 @@ var webpack = require("webpack"),
 module.exports = {
   entry: WH.makeEntry(),
   output: {
-    path: __dirname + PC.js.webpack,
+    path: PC.js.webpack,
     filename: "[name].js"
   },
   resolve: {

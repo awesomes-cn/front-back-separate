@@ -8,7 +8,7 @@ const exec = require('child_process').exec,
 
 let cmds = Helper.walkDirectory(DistFolder, 1).map((item)=> {
   let _distname = item + '.min.js'
-  return 'uglifyjs ' + item +'/* -o ' + _distname + ' --compress'
+  return 'uglifyjs ' + item +'.js -o ' + _distname + ' --compress'
 }).join(" && ")
 
 exec(cmds, ()=> {

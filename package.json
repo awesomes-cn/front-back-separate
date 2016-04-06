@@ -1,22 +1,22 @@
 {
-  "name": "workboot",
+  "name": "front-back-separate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "node tool/build",
-    "test": "eslint src/js"
+    "watch": "node tool/watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awesomes-cn/workboot.git"
+    "url": "git+https://github.com/awesomes-cn/front-back-separate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/awesomes-cn/workboot/issues"
+    "url": "https://github.com/awesomes-cn/front-back-separate/issues"
   },
-  "homepage": "https://github.com/awesomes-cn/workboot#readme",
+  "homepage": "https://github.com/awesomes-cn/front-back-separate#readme",
   "devDependencies": {
     "ava": "^0.13.0",
     "babel-cli": "^6.6.5",
@@ -34,6 +34,7 @@
     "colors": "^1.1.2",
     "clean-css": "^3.4.10",
     "jsdoc": "^3.4.0",
+    "chokidar": "^1.4.3",
     "koa": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-views": "^5.0.1",

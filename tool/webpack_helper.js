@@ -15,7 +15,7 @@ let makeEntry = ()=> {
   },{})
 }
 
-
+console.log(makeEntry())
 module.exports = {
   makeEntry: makeEntry
 }

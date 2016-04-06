@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require("fs"),
+      exec = require('child_process').execSync,
       path = require('path');
 
 /**
@@ -52,8 +53,36 @@ let getFilesByLevel = (dir, files, level)=> {
 }
 
 
+/**
+ * 执行自动化任务
+ * @param  {string} cmds 命令集合
+ */
+let build =  (cmds)=> { 
+  let start = Date.now()
+  let prev = Date.now()
+  cmds.forEach((item)=> {
+    console.log(('[' + item.tip.green + '] 开始 ...'))
+    exec(item.cmd,(err)=> {
+      console.log("ok")
+      if (err) {
+        console.error(err)
+        return
+      }
+    })
+    console.log(('[' + item.tip.green + '] 完成，耗时 ' + timeDiff(prev) + ' 秒'))
+    prev = Date.now()
+  })
+  console.log(('所有任务完成，耗时 ' + timeDiff(start) + ' 秒').magenta)
+}
+
+
+let timeDiff = (start)=> {
+  return (Date.now() - start) / 1000 
+}
+
  
 module.exports = {
   walk: walk,
-  walkDirectory: walkDirectory
+  walkDirectory: walkDirectory,
+  build: build
 }
