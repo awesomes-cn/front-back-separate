@@ -50,7 +50,7 @@ const tasks = {
     tip: 'Mock 数据'
   },
   'vendor:js': {
-    cmd: 'uglifyjs ' + PC.js.vendor.src + ' -o ' + PC.js.vendor.dist + ' --compress',
+    cmd: 'uglifyjs ' + PC.js.vendor.src + ' dist/js/common/*.js -o ' + PC.js.vendor.dist + ' --compress',
     tip: '公共 JS 打包压缩'
   },
   'sass': {
@@ -62,7 +62,7 @@ const tasks = {
     tip: 'CSS 合并'
   },
   'vendor:css': {
-    cmd: 'cat vendor/css/*  | cleancss -o  dist/vendor.min.css --s0',
+    cmd: 'cat vendor/css/* dist/css/common/*  | cleancss -o  dist/vendor.min.css --s0',
     tip: '公共 CSS 打包压缩'
   }
   

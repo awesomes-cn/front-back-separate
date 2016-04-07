@@ -10,15 +10,19 @@ html
 
   body#app
     header
+      h2
+        | 当前登录状态是 
+        span(v-cloak) {{islogin}}
+      button(v-on:click="login" v-show="!islogin") 登录
+      button(v-on:click="logout" v-show="islogin") 注销
     block con
     footer
       script(src="/dist/vendor.min.js")
       
       //- 测试环境下额外的JS代码
       script(src="/dist/js/development.js") 
-      
-      script.
-        window.Controller = {}
       script(src="/dist/js/controller/#{route.controller}.min.js")
       script.
-        new Controller.#{route.action}
+        new APP.#{route.controller}.#{route.action}
+
+

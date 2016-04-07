@@ -1,5 +1,21 @@
+let baseurl = 'http://192.168.26.128:4000' 
+
 window.API = {
   
+
+  ajax: (url, method, data, successHandler)=> {
+    $.ajax({
+      type: method,
+      url: url,
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: successHandler   
+    })
+    
+  },
   /**
    * 发送Get请求获取数据
    * @param  {string} apiName        API名
@@ -12,8 +28,18 @@ window.API = {
     if (ismock) {
       successHandler(window.MOCK[apiName])
     }else{
-      let url = 'http://test.dpj.com/api?apiname=' + apiName
-      $.get(url, params, successHandler)
+      let url = baseurl + '?apiname=' + apiName
+      API.ajax(url, 'get', params, successHandler)
+    }
+  },
+
+  post: (apiName, params, successHandler, ismock)=> {
+    if (ismock) {
+      successHandler(window.MOCK[apiName])
+    }else{
+      let url = baseurl
+      API.ajax(url, 'post', {apiname: apiName}, successHandler)
     }
   }
+
 }

@@ -1,7 +1,8 @@
 extends ../layouts/layout.jade
 block con
+  button(v-on:click="getMems") 获取列表
   h1 下面是列表
-  ul
+  ul(v-cloak)
     li(v-for="item in items") {{item.name}}
   
 

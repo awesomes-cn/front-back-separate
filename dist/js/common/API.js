@@ -1,7 +1,21 @@
 'use strict';
 
+var baseurl = 'http://192.168.26.128:4000';
+
 window.API = {
 
+  ajax: function ajax(url, method, data, successHandler) {
+    $.ajax({
+      type: method,
+      url: url,
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: successHandler
+    });
+  },
   /**
    * 发送Get请求获取数据
    * @param  {string} apiName        API名
@@ -14,8 +28,18 @@ window.API = {
     if (ismock) {
       successHandler(window.MOCK[apiName]);
     } else {
-      var url = 'http://test.dpj.com/api?apiname=' + apiName;
-      $.get(url, params, successHandler);
+      var url = baseurl + '?apiname=' + apiName;
+      API.ajax(url, 'get', params, successHandler);
+    }
+  },
+
+  post: function post(apiName, params, successHandler, ismock) {
+    if (ismock) {
+      successHandler(window.MOCK[apiName]);
+    } else {
+      var url = baseurl;
+      API.ajax(url, 'post', { apiname: apiName }, successHandler);
     }
   }
+
 };
